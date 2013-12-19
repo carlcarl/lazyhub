@@ -1,0 +1,4 @@
+Django==1.6
+django-bootstrap3==2.3.0
+requests==2.1.0
+wsgiref==0.1.2

@@ -1,0 +1,52 @@
+
+h1 {
+	font-size: 8em;
+	/* font-size: 80px; */
+}
+
+#content {
+	text-align: center;
+}
+
+#tagline {
+	font-size: 1.8em;
+}
+
+.github-button {
+	margin: 0 0.5em;
+}
+
+#github-form {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	/* text-align: center; */
+}
+
+.input-group-simple, .has-error .input-group-addon {
+	border: none;
+	background-color: inherit;
+}
+
+#days {
+	border-radius: 4px;
+}
+
+#repo-table th{
+	text-align: center;
+}
+
+#repo-table td{
+	text-align: center;
+}
+
+#loading {
+	/* display: inline-block; */
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#loading.hidden {
+	display: inline-block;
+	visibility: hidden;
+}
+

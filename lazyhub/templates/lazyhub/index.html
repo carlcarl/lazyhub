@@ -1,0 +1,47 @@
+{% extends 'lazyhub/layout.html' %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<h1>Lazyhub</h1>
+<p id="tagline">
+List your starred github repos that haven't been updated for a long time<br>
+</p>
+<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&repo=lazyhub&type=watch&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="75" height="30"></iframe>
+<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&repo=lazyhub&type=fork&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="75" height="30"></iframe>
+<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+
+<div class="col-md-10 col-md-offset-1">
+	<form id="github-form" class="form-inline" name="github-form" role="form">
+		<div id="account-group" class="form-group">
+				<input id="account" name="account" class="form-control" type="text" placeholder="Enter account">
+		</div>
+		<div id="days-group" class="form-group">
+			{% csrf_token %}
+			<div class="input-group" style="width: 250px;">
+				<label class="sr-only" for="timedelta"></label>
+				<span class="input-group-addon input-group-simple">Since</span>
+				<input id="days" name="days" class="days form-control" type="text" placeholder="" value="100">
+				<span class="input-group-addon input-group-simple">day(s) ago</span>
+			</div>
+		</div>
+		<button id="submit" type="submit" class="btn btn-default btn-lg">Go</button>
+		<span id="loading" class="invisible"><img src="{% static "images/ajax-loader.gif" %}"></span>
+	</form>
+	<div class="table-responsive">
+		<table id="repo-table" class="table table-hover">
+
+		</table>
+	</div>
+</div>
+
+
+{% endblock %}
