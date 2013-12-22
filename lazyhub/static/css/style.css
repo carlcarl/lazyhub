@@ -1,15 +1,5 @@
-
-h1 {
-	font-size: 8em;
-	/* font-size: 80px; */
-}
-
 #content {
 	text-align: center;
-}
-
-#tagline {
-	font-size: 1.8em;
 }
 
 .github-button {
@@ -17,14 +7,14 @@ h1 {
 }
 
 #github-form {
-	padding-top: 60px;
-	padding-bottom: 60px;
-	/* text-align: center; */
+	padding-top: 50px;
+	padding-bottom: 30px;
 }
 
 .input-group-simple, .has-error .input-group-addon {
 	border: none;
 	background-color: inherit;
+	font-size: 1.2em;
 }
 
 #days {
@@ -40,9 +30,8 @@ h1 {
 }
 
 #loading {
-	/* display: inline-block; */
 	display: inline-block;
-	margin-left: 10px;
+	margin-top: 20px;
 }
 
 #loading.hidden {
@@ -50,3 +39,37 @@ h1 {
 	visibility: hidden;
 }
 
+@media(max-width:767px) {
+	h1 {
+		font-size: 5em;
+	}
+	#tagline {
+		font-size: 1.8em;
+	}
+
+	/* 
+	 * Because the animation make the repo table
+	 * show incorrectly with small device,
+	 * here I just remove the animation as a workaround
+	 */
+	#repo-table tr{
+		-webkit-animation-name: none;
+		animation: none;
+	}
+
+}
+@media(min-width:768px) {
+	h1 {
+		font-size: 8em;
+	}
+	#tagline {
+		font-size: 2em;
+	}
+	#repo-table {
+		font-size: 1.2em;
+	}
+}
+@media(min-width:992px) {
+}
+@media(min-width:1200px) {
+}

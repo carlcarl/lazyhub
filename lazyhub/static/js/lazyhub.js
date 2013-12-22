@@ -3,16 +3,19 @@
 /*global $, jQuery, alert, console*/
 $(document).ready(function () {
     "use strict";
-    /*
+/*
     var i, tableRow, tableHead;
-    tableHead = $('<tr><th>#</th><th>Repo</th><th>Last updated time</tr>');
+    tableHead = $('<thead><tr><th>#</th><th>Repo</th><th>Last updated time</th></tr></thead>');
     $('#repo-table').html(tableHead);
     for (i = 0; i < 10; i += 1) {
-        tableRow = $('<tr><td>' + (i + 1) + '</td><td><a>123</a></td><td>456</td></tr>');
+        tableRow = $('<tr><td>' + (i + 1) + '</td><td>aaaaaaaaaaaaaaaaaaaaaaaapython-recsys/benchy</td><td>2013-03-22T16:48:58aaaa</td></tr>');
         $('#repo-table').append(tableRow);
-        tableRow.addClass('animated fadeInDown');
+        if ($(window).width() >= 768) {
+            tableRow.addClass('animated fadeInDown');
+        }
     }
-    */
+*/
+
     $('#github-form').on('submit', function (event) {
         $.ajax(
             {
@@ -43,7 +46,7 @@ $(document).ready(function () {
                 return;
             }
 
-            tableHead = $('<tr><th width="25%">#</th><th>Repo</th><th width="25%">Last updated time</tr>');
+            tableHead = $('<tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>');
             $('#repo-table').html(tableHead);
             for (i = 0, len = data.data.length; i < len; i += 1) {
                 rowNum = $('<td>' + (i + 1) + '</td>');
@@ -52,11 +55,14 @@ $(document).ready(function () {
                 repoLink.prop('target', data.data[i].full_name);
                 repoLink.text(data.data[i].full_name);
                 rowRepo = $('<td></td>').append(repoLink);
-                rowDate = $('<td>' + data.data[i].pushed_at + '</td>');
+                rowDate = $('<td></td>');
+                rowDate.text(data.data[i].pushed_at);
                 tableRow = $('<tr></tr>');
                 tableRow.append(rowNum).append(rowRepo).append(rowDate);
                 $('#repo-table').append(tableRow);
-                tableRow.addClass('animated fadeInDown');
+                if ($(window).width() >= 768) {
+                    tableRow.addClass('animated fadeInDown');
+                }
             }
             console.log('Query success');
         }).fail(function () {
