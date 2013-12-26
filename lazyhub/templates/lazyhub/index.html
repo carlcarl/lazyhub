@@ -13,21 +13,18 @@
 <span class="hidden-xs">List your starred github repos that haven't been updated for a long time</span>
 <span class="visible-xs">Show the lazy github repos you starred</span>
 </p>
-	<!--
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&repo=lazyhub&type=fork&size=large"
-		allowtransparency="true" frameborder="0" scrolling="0" width="75" height="30"></iframe>
-	-->
+
 <div class="hidden-xs">
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&repo=lazyhub&type=watch&size=large"
+	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
 		allowtransparency="true" frameborder="0" scrolling="0" width="75" height="30"></iframe>
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&type=follow&count=true&size=large"
+	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;count=true&amp;size=large"
 		allowtransparency="true" frameborder="0" scrolling="0" width="230" height="30"></iframe>
 </div>
 
 <div class="visible-xs">
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&repo=lazyhub&type=watch&size=large"
+	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
 		allowtransparency="true" frameborder="0" scrolling="0" width="75" height="30"></iframe>
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&type=follow&size=large"
+	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
 		allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
 </div>
 
@@ -40,7 +37,7 @@
 		<div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5">
 			{% csrf_token %}
 			<div class="input-group" style="/*width: 250px;*/">
-				<label class="sr-only" for="timedelta"></label>
+				<label class="sr-only" for="days"></label>
 				<span class="input-group-addon input-group-simple">Since</span>
 				<input id="days" name="days" class="days form-control" type="text" placeholder="" value="100">
 				<span class="input-group-addon input-group-simple">day(s) ago</span>
