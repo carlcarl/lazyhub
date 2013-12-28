@@ -8,25 +8,29 @@
 
 {% block content %}
 
-<h1>Lazyhub</h1>
-<p id="tagline">
-<span class="hidden-xs">List your starred github repos that haven't been updated for a long time</span>
-<span class="visible-xs">Show the lazy github repos you starred</span>
-</p>
+<header>
+	<h1>Lazyhub</h1>
+	<p id="tagline">
+	<span class="hidden-xs">List your starred github repos that haven't been updated for a long time</span>
+	<span class="visible-xs">Show the lazy github repos you starred</span>
+	</p>
+</header>
 
-<div class="hidden-xs">
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
-		style="overflow:hidden;border-width:0px;width:75px;height:30px"></iframe>
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;count=true&amp;size=large"
-		style="overflow:hidden;border-width:0px;width:230px;height:30px"></iframe>
-</div>
+<section>
+	<div class="hidden-xs">
+		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
+			style="overflow:hidden;border-width:0px;width:75px;height:30px"></iframe>
+		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;count=true&amp;size=large"
+			style="overflow:hidden;border-width:0px;width:230px;height:30px"></iframe>
+	</div>
 
-<div class="visible-xs">
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
-		style="overflow:hidden;border-width:0px;width:75px;height:30px"></iframe>
-	<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
-		style="overflow:hidden;border-width:0px;width:170px;height:30px" ></iframe>
-</div>
+	<div class="visible-xs">
+		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
+			style="overflow:hidden;border-width:0px;width:75px;height:30px"></iframe>
+		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
+			style="overflow:hidden;border-width:0px;width:170px;height:30px" ></iframe>
+	</div>
+</section>
 
 <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 	<form id="github-form" class="form-inline" name="github-form" role="form">
