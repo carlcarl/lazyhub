@@ -3,6 +3,7 @@ header, section, footer, aside, nav, article, figure {
 }
 
 #content {
+	padding-top: 120px;
 	text-align: center;
 }
 
@@ -11,7 +12,7 @@ header, section, footer, aside, nav, article, figure {
 }
 
 #github-form {
-	padding-top: 50px;
+	padding-top: 60px;
 	padding-bottom: 30px;
 }
 
@@ -36,6 +37,7 @@ header, section, footer, aside, nav, article, figure {
 #loading {
 	display: inline-block;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 #loading.hidden {
