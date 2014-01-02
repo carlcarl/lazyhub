@@ -9,6 +9,9 @@ header, section, footer, aside, nav, article, figure {
 
 .github-button {
 	margin: 0 0.5em;
+	overflow: hidden;
+	border-width:0px;
+	height: 30px;
 }
 
 #github-form {
