@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'lazyhub.views.index', name='index'),
+    url(r'^(?P<account>\w+)/(?P<days>\d+)$', 'lazyhub.views.query', name='query'),
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^admin/', include(admin.site.urls)),

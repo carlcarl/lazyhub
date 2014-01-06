@@ -50,21 +50,6 @@
 		{% endif %}
 	</head>
 	<body>
-		<!--
-		<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
-		<div class="container">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">Lazyhub</a>
-			<nav class="nav-collapse collapse" role="navigation">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
-			</ul>
-			</nav>
-		</div>
-		</header>
-		-->
 		{% block bootstra3_content %}
 		<div class="row">
 			<div id="content" class="col-sm-10 col-sm-offset-1">
@@ -73,12 +58,13 @@
 			</div>
 		</div>
 		{% if debug %}
-		<script src="{% static "vendor/bootstrap3/js/jquery-1.10.2.min.js" %}"></script>
+		<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
 		<script src="{% static "vendor/bootstrap3/js/bootstrap.min.js" %}"></script>
 		{% else %}
 		{% bootstrap_javascript jquery=True %}
 		{% endif %}
-		
+		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
 		<script src="{% static "js/lazyhub.js" %}"></script>
 		{% endblock %}
 	</body>

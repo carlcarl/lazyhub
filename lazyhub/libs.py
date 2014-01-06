@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 URL = 'https://api.github.com/users/'
 
 
-def query(account):
+def github_query(account):
     repos = []
     url = URL + account + '/starred'
     # TODO
