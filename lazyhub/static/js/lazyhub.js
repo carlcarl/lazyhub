@@ -198,10 +198,7 @@
             this.collection.formModel = this.formView.model;
             this.collection.fetch({
                 success: this.querySuccess,
-                error: function (collection, response) {
-                    that.alertView.msg = 'Request fail!';
-                    that.alertView.render();
-                }
+                error: this.queryError,
             });
             return false;
         },
