@@ -32,18 +32,108 @@
         idAttribute: 'full_name'
     });
 
+    App.Models.Form = Backbone.Model.extend({
+        defaults: {
+            'error': {
+                'account': false,
+                'days': false,
+            },
+            'account': '',
+            'days': 100
+        },
+        validate: function (attributes, options) {
+            var account, days, error, msg;
+            account = this.attributes.account;
+            days = this.attributes.days;
+            error = this.attributes.error;
+            msg = '';
+            if (account === '') {
+                error.account = true;
+                msg += 'account field error\n';
+            } else {
+                error.account = false;
+            }
+            if (days === '') {
+                error.days = true;
+                msg += 'days field error\n';
+            } else {
+                error.days = false;
+            }
+            if (error.account || error.days) {
+                return msg;
+            }
+        },
+    });
+
     App.Collections.Repos = Backbone.Collection.extend({
         model: App.Models.Repo,
+
+        initialize: function () {
+            // this.formView = null;
+        },
         url: function () {
-            var account, days;
-            account = $('#account').val();
-            days = $('#days').val();
+            var account, days, errorClass, inputGroup;
+            // TODO: Use other better getter method
+            account = this.formModel.attributes.account;
+            days = this.formModel.attributes.days;
             return '/' + account + '/' + days;
         },
         parse: function (response) {
             console.log(response.data);
             return response.data;
         }
+    });
+
+    App.Views.Form = Backbone.View.extend({
+        el: $('#github-form'),
+        template: _.template($('#form-template').html()),
+        model: new App.Models.Form(),
+
+        initialize: function () {
+            this.render();
+        },
+
+        events: {
+            'submit': 'submit'
+        },
+
+        submit: function () {
+            event.preventDefault();
+            var account, days, error;
+            account = this.$('#account').val();
+            days = this.$('#days').val();
+            this.model.set({
+                account: account,
+                days: days
+            });
+            if (this.model.isValid()) {
+                this.trigger('query');
+            } else {
+                console.log(this.model.validationError);
+            }
+            this.render();
+            return false;
+        },
+
+        render: function () {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        },
+    });
+
+    App.Views.Alert = Backbone.View.extend({
+        el: $('#alert'),
+        template: _.template($('#alert-template').html()),
+        initialize: function () {
+            this.msg = 'Error';
+        },
+        render: function () {
+            var msg;
+            // For tiny data, skip using models
+            msg = {alert_msg: this.msg};
+            $(this.el).html(this.template(msg));
+            return this;
+        },
     });
 
     App.Views.Repo = Backbone.View.extend({
@@ -70,9 +160,10 @@
         template: _.template($('#repos-template').html()),
 
         render: function () {
-            var animateFlag;
-            animateFlag = ($(window).width() >= 768);
+            var animateFlag, container;
             $(this.el).html(this.template());
+            animateFlag = ($(window).width() >= 768);
+            container = document.createDocumentFragment();
             _.each(this.collection.models, function (model, index) {
                 model.attributes.counter = index + 1;
                 var v = new App.Views.Repo({
@@ -80,8 +171,9 @@
                 }, {
                     animateFlag: animateFlag
                 });
-                $(this.el).append(v.render().$el);
+                container.appendChild(v.render().el);
             }, this);
+            $(this.el).append(container);
             return this;
         },
     });
@@ -89,53 +181,56 @@
     App.Views.All = Backbone.View.extend({
         collection: new App.Collections.Repos(),
         el: $('#content'),
+        formView: new App.Views.Form(),
+        alertView: new App.Views.Alert(),
 
         initialize: function (attributes) {
+            _.bindAll(this, 'querySuccess', 'queryError');
             this.collection.bind('request', this.showLoading, this);
             this.collection.bind('sync', this.hideLoading, this);
-        },
-
-        events: {
-            'submit #github-form': 'query'
+            this.formView.bind('query', this.query, this);
         },
 
         query: function (event) {
             var data, that;
-            event.preventDefault();
             that = this;
+            // this.collection.formView = this.formView;
+            this.collection.formModel = this.formView.model;
             this.collection.fetch({
-                success: function (collection, response) {
-                    var errorFlag, errorClass, prop, inputGroup;
-                    console.log(collection);
-                    console.log(response);
-                    errorFlag = false;
-                    errorClass = 'has-error';
-                    for (prop in response.error) {
-                        if (response.error.hasOwnProperty(prop)) {
-                            inputGroup = '#' + prop + '-group';
-                            if (response.error[prop]) {
-                                this.$(inputGroup).addClass(errorClass);
-                                errorFlag = true;
-                            } else if ($(inputGroup).hasClass(errorClass)) {
-                                this.$(inputGroup).removeClass(errorClass);
-                            }
-                        }
-                    }
-                    if (errorFlag) {
-                        alert('Query fail');
-                        console.log('Field error');
-                        return;
-                    }
-                    that.reposView = new App.Views.Repos({
-                        collection: collection
-                    });
-                    that.reposView.render();
-                },
+                success: this.querySuccess,
                 error: function (collection, response) {
-                    alert('Request fail');
+                    that.alertView.msg = 'Request fail!';
+                    that.alertView.render();
                 }
             });
             return false;
+        },
+
+        querySuccess: function (collection, response) {
+            var errorFlag, prop;
+            console.log(collection);
+            console.log(response);
+            errorFlag = false;
+            for (prop in response.error) {
+                if (response.error.hasOwnProperty(prop)) {
+                    this.formView.model.attributes.error[prop] = response.error[prop];
+                    errorFlag = errorFlag || response.error[prop];
+                }
+            }
+            if (errorFlag) {
+                this.alertView.msg = 'Query fail!';
+                this.alertView.render();
+                return;
+            }
+            this.reposView = new App.Views.Repos({
+                collection: collection
+            });
+            this.reposView.render();
+        },
+
+        queryError: function (collection, response) {
+            this.alertView.msg = 'Request fail!';
+            this.alertView.render();
         },
 
         showLoading: function () {

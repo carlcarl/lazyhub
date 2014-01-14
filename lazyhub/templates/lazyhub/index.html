@@ -34,23 +34,33 @@
 
 <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 	<form id="github-form" class="form-inline" name="github-form" role="form">
-		<div id="account-group" class="form-group col-xs-12 col-sm-4 col-lg-3 col-lg-offset-1">
-			<label class="sr-only" for="account"></label>
-			<input id="account" name="account" class="form-control" type="text" placeholder="Enter account" autofocus>
-		</div>
-		<div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5">
-			<div class="input-group" style="/*width: 250px;*/">
-				<label class="sr-only" for="days"></label>
-				<span class="input-group-addon input-group-simple">Since</span>
-				<input id="days" name="days" class="days form-control" type="text" placeholder="" value="100">
-				<span class="input-group-addon input-group-simple">day(s) ago</span>
+		<script type="text/template" id="form-template">
+			<div id="account-group" class="form-group col-xs-12 col-sm-4 col-lg-3 col-lg-offset-1 <%= error.account === true ? 'has-error' : '' %>">
+				<label class="sr-only" for="account"></label>
+				<input id="account" name="account" class="form-control" type="text" placeholder="Enter account" autofocus value="<%= account %>">
 			</div>
-		</div>
-		<div id="submit-group" class="form-group col-xs-12 col-sm-2 col-lg-2">
-			<button id="submit" type="submit" class="btn btn-primary btn-block">Go</button>
-		</div>
+			<div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5 <%= error.days  === true ? 'has-error' : '' %>">
+				<div class="input-group" style="/*width: 250px;*/">
+					<label class="sr-only" for="days"></label>
+					<span class="input-group-addon input-group-simple">Since</span>
+					<input id="days" name="days" class="days form-control" type="text" placeholder="" value="<%= days %>">
+					<span class="input-group-addon input-group-simple">day(s) ago</span>
+				</div>
+			</div>
+			<div id="submit-group" class="form-group col-xs-12 col-sm-2 col-lg-2">
+				<button id="submit" type="submit" class="btn btn-primary btn-block">Go</button>
+			</div>
+		</script>
 	</form>
 	<div id="loading" class="col-lg-12 invisible"><img src="{% static "images/ajax-loader.gif" %}" alt="loading" /></div>
+	<div id="alert" class="col-lg-12">
+		<script type="text/template" id="alert-template">
+			<div class="alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<span><%= alert_msg %></span>
+			</div>
+		</script>
+	</div>
 	<div class="table-responsive">
 		<table id="repo-table" class="table table-hover">
 			<script type="text/template" id="repos-template">
@@ -62,6 +72,5 @@
 		</script>
 	</div>
 </div>
-
 
 {% endblock %}
