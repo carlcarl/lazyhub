@@ -61,15 +61,17 @@
 			</div>
 		</script>
 	</div>
-	<div class="table-responsive">
-		<table id="repo-table" class="table table-hover">
-			<script type="text/template" id="repos-template">
-				<tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>
+	<div class="col-lg-12">
+		<div class="table-responsive">
+			<table id="repo-table" class="table table-hover">
+				<script type="text/template" id="repos-template">
+					<tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>
+				</script>
+			</table>
+			<script type="text/template" id="repo-template">
+				<td><%= counter %></td><td><a href="<%= html_url %>" target="<%= full_name %>"><%= full_name %></a></td><td><%= pushed_at %></td>
 			</script>
-		</table>
-		<script type="text/template" id="repo-template">
-			<td><%= counter %></td><td><a href="<%= html_url %>" target="<%= full_name %>"><%= full_name %></a></td><td><%= pushed_at %></td>
-		</script>
+		</div>
 	</div>
 </div>
 

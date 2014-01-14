@@ -97,7 +97,7 @@
             'submit': 'submit'
         },
 
-        submit: function () {
+        submit: function (event) {
             event.preventDefault();
             var account, days, error;
             account = this.$('#account').val();
