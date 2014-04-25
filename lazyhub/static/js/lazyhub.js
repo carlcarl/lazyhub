@@ -146,6 +146,7 @@
 
         render: function () {
             console.log(this.model.toJSON());
+            $(this.el).attr('data-index', this.model.get('full_name'));
             var html = $(this.el).html(this.template(this.model.toJSON()));
             this.setElement($(html));
             if (this.animateFlag) {
