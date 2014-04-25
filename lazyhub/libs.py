@@ -41,6 +41,8 @@ def _query(url):
             ret_repos.append(tmp)
         logger.debug(json.dumps(repos, indent=2))
         logger.debug(resp.headers)
+        if 'link' not in resp.headers:
+            return ret_repos, None
         links = resp.headers['link'].split(',')
         next_link = None
         for link in links:
