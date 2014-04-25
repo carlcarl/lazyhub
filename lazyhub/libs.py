@@ -75,4 +75,4 @@ if __name__ == '__main__':
     console.setFormatter(formatter)
     logger.addHandler(console)
     logger.setLevel(logging.DEBUG)
-    query('carlcarl')
+    github_query('carlcarl')
