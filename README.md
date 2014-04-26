@@ -1,8 +1,12 @@
 lazyhub
 =======
 
-List your starred github repos that haven't been updated for a long time
+Show the inactive github repos you starred
 
+## Feature
+
+* Search repos according to the days of the last commit
+* Filter searched repos using the keyword
 
 ## Installation
 
