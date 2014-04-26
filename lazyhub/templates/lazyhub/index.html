@@ -39,7 +39,7 @@
 				<input id="account" name="account" class="form-control" type="text" placeholder="Enter account" autofocus value="<%= account %>">
 			</div>
 			<div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5 <%= error.days  === true ? 'has-error' : '' %>">
-				<div class="input-group" style="/*width: 250px;*/">
+				<div class="input-group">
 					<label class="sr-only" for="days"></label>
 					<span class="input-group-addon input-group-simple">Since</span>
 					<input id="days" name="days" class="days form-control" type="text" placeholder="" value="<%= days %>">
@@ -61,7 +61,15 @@
 		</script>
 	</div>
 	<div class="col-lg-12">
-		<div class="table-responsive">
+		<div id="repo-form" class="table-responsive col-lg-12">
+			<div id="search-form" class="ui input col-md-6 col-md-offset-3">
+				<script type="text/template" id="search-template">
+					<label class="sr-only" for="search"></label>
+					<input id="search-field" name="search" class="form-control" type="text" placeholder="Search repo name..." autofocus value="">
+				</script>
+			</div>
+			<style id="m-search">
+			</style>
 			<table id="repo-table" class="table table-hover">
 				<script type="text/template" id="repos-template">
 					<tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>
