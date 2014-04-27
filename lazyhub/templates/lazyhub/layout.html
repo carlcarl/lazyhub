@@ -60,11 +60,13 @@
 		{% if debug %}
 		<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
 		<script src="{% static "vendor/bootstrap3/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "vendor/underscore.js/1.6.0/underscore-min.js" %}"></script>
+		<script src="{% static "vendor/backbone.js/1.1.2/backbone-min.js" %}"></script>
 		{% else %}
 		{% bootstrap_javascript jquery=True %}
+		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
 		{% endif %}
-		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
 		<script src="{% static "js/lazyhub.js" %}"></script>
 		{% endblock %}
 	</body>
