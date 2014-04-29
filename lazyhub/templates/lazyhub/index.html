@@ -5,14 +5,11 @@
 
 {% block content %}
 
-<header>
+<header id="header">
 	<h1>Lazyhub</h1>
 	<p id="tagline">
-	<span>Show the inactive github repos you starred</span>
+		<span>Show the inactive github repos you starred</span>
 	</p>
-</header>
-
-<section>
 	<div class="hidden-xs">
 		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
 			style="width:75px;"></iframe>
@@ -26,7 +23,7 @@
 		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
 			style="width:170px;" ></iframe>
 	</div>
-</section>
+</header>
 
 <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 	<form id="github-form" class="form-inline" name="github-form" role="form">
@@ -58,10 +55,13 @@
 		</script>
 	</div>
 	<div class="col-lg-12">
-		<div id="search-form" class="ui input col-md-6 col-md-offset-3">
-			<script type="text/template" id="search-template">
-				<label class="sr-only" for="search"></label>
-				<input id="search-field" name="search" class="form-control" type="text" placeholder="Search repo name..." autofocus value="">
+		<div id="filter-form" class="ui input col-md-6 col-md-offset-3">
+			<script type="text/template" id="filter-template">
+				<label class="sr-only" for="filter-field"></label>
+				<div class="input-group">
+					<input id="filter-field" name="filter-field" class="form-control" type="text" placeholder="Filter repo..." autofocus value="">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+				</div>
 			</script>
 		</div>
 		<!-- Ref: http://blog.mukispace.com/full-text-search-by-css/ -->

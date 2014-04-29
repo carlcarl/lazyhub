@@ -1,86 +1,95 @@
 header, section, footer, aside, nav, article, figure { 
-	display: block; 
+    display: block; 
 }
 
 #content {
-	padding-top: 120px;
-	text-align: center;
+    padding-top: 120px;
+    text-align: center;
+}
+
+#header {
+    padding-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .github-button {
-	margin: 0 0.5em;
-	overflow: hidden;
-	border-width:0px;
-	height: 30px;
+    margin: 0 0.5em;
+    overflow: hidden;
+    border-width:0px;
+    height: 30px;
 }
 
 #github-form {
-	padding-top: 60px;
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .input-group-simple, .has-error .input-group-addon {
-	border: none;
-	background-color: inherit;
-	font-size: 1.2em;
+    border: none;
+    background-color: inherit;
+    font-size: 1.2em;
 }
 
 #days {
-	border-radius: 4px;
+    border-radius: 4px;
 }
 
-#search-form {
+#filter-form {
     padding-bottom: 40px;
 }
 
 #repo-table th{
-	text-align: center;
+    text-align: center;
 }
 
 #repo-table td{
-	text-align: center;
+    text-align: center;
 }
 
 #loading {
-	display: inline-block;
-	margin-top: 20px;
-	margin-bottom: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #loading.hidden {
-	display: inline-block;
-	visibility: hidden;
+    display: inline-block;
+    visibility: hidden;
 }
 
 @media(max-width:767px) {
-	h1 {
-		font-size: 5em;
-	}
-	#tagline {
-		font-size: 1.8em;
-	}
+    #header {
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+    }
+    h1 {
+        font-size: 5em;
+    }
+    #tagline {
+        padding: 5px;
+        font-size: 1.8em;
+    }
 
-	/* 
-	 * Because the animation make the repo table
-	 * show incorrectly with small device,
-	 * here I just remove the animation as a workaround
-	 */
-	#repo-table tr{
-		-webkit-animation-name: none;
-		animation: none;
-	}
+    /* 
+     * Because the animation make the repo table
+     * show incorrectly with small device,
+     * here I just remove the animation as a workaround
+     */
+    #repo-table tr{
+        -webkit-animation-name: none;
+        animation: none;
+    }
 
 }
 @media(min-width:768px) {
-	h1 {
-		font-size: 8em;
-	}
-	#tagline {
-		font-size: 2em;
-	}
-	#repo-table {
-		font-size: 1.2em;
-	}
+    h1 {
+        font-size: 8em;
+    }
+    #tagline {
+        font-size: 2em;
+    }
+    #repo-table {
+        font-size: 1.2em;
+    }
 }
 @media(min-width:992px) {
 }

@@ -136,22 +136,22 @@
         },
     });
 
-    App.Views.Search = Backbone.View.extend({
-        el: $('#search-form'),
-        template: _.template($('#search-template').html()),
+    App.Views.Filter = Backbone.View.extend({
+        el: $('#filter-form'),
+        template: _.template($('#filter-template').html()),
         initialize: function () {
         },
         events: {
             'keyup': 'filter',
         },
         filter: function () {
-            var mSearch, searchField;
+            var mSearch, filterField;
             mSearch = $("#m-search");
-            searchField = $('#search-field').val();
-            if (!searchField) {
+            filterField = $('#filter-field').val();
+            if (!filterField) {
                 mSearch.html('');
             } else {
-                mSearch.html('.search-row:not([data-index*="' + searchField + '"]) {display: none;}');
+                mSearch.html('.search-row:not([data-index*="' + filterField + '"]) {display: none;}');
                 
             }
         },
@@ -187,11 +187,11 @@
         template: _.template($('#repos-template').html()),
 
         render: function () {
-            var animateFlag, container, searchField;
+            var animateFlag, container, filterView;
             $(this.el).html(this.template());
             animateFlag = ($(window).width() >= 768);
             container = document.createDocumentFragment();
-            searchField = new App.Views.Search();
+            filterView = new App.Views.Filter();
             _.each(this.collection.models, function (model, index) {
                 model.attributes.counter = index + 1;
                 var v = new App.Views.Repo({
@@ -202,7 +202,7 @@
                 container.appendChild(v.render().el);
             }, this);
             $(this.el).append(container);
-            searchField.render();
+            filterView.render();
             return this;
         },
     });
