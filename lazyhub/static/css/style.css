@@ -9,7 +9,6 @@ header, section, footer, aside, nav, article, figure {
 
 #header {
     padding-bottom: 30px;
-    margin-bottom: 20px;
 }
 
 .github-button {
@@ -20,7 +19,8 @@ header, section, footer, aside, nav, article, figure {
 }
 
 #github-form {
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .input-group-simple, .has-error .input-group-addon {
@@ -31,6 +31,10 @@ header, section, footer, aside, nav, article, figure {
 
 #days {
     border-radius: 4px;
+}
+
+#search-result {
+    padding-top: 20px;
 }
 
 #filter-form {
@@ -45,21 +49,9 @@ header, section, footer, aside, nav, article, figure {
     text-align: center;
 }
 
-#loading {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#loading.hidden {
-    display: inline-block;
-    visibility: hidden;
-}
-
 @media(max-width:767px) {
     #header {
         padding-bottom: 20px;
-        margin-bottom: 10px;
     }
     h1 {
         font-size: 5em;

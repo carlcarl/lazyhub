@@ -41,11 +41,11 @@
 				</div>
 			</div>
 			<div id="submit-group" class="form-group col-xs-12 col-sm-2 col-lg-2">
-				<button id="submit" type="submit" class="btn btn-primary btn-block">Go</button>
+				<button id="submit" type="submit" class="btn btn-primary btn-block ladda-button" data-style="zoom-in"><span class="ladda-label">Go</span></button>
 			</div>
+			<div class="clearfix"></div>
 		</script>
 	</form>
-	<div id="loading" class="col-lg-12 invisible"><img src="{% static "images/ajax-loader.gif" %}" alt="loading" /></div>
 	<div id="alert" class="col-lg-12">
 		<script type="text/template" id="alert-template">
 			<div class="alert alert-danger alert-dismissable">
@@ -54,7 +54,7 @@
 			</div>
 		</script>
 	</div>
-	<div class="col-lg-12">
+	<div id="search-result" class="col-lg-12">
 		<div id="filter-form" class="ui input col-md-6 col-md-offset-3">
 			<script type="text/template" id="filter-template">
 				<label class="sr-only" for="filter-field"></label>

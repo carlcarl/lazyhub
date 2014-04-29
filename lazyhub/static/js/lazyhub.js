@@ -1,11 +1,11 @@
 /*jslint browser:true */
 /*jslint es5: true */
 /*jslint nomen: true */
-/*global $, _, jQuery, alert, console, Backbone*/
+/*global $, _, jQuery, alert, console, Backbone, Ladda*/
 (function ($) {
     "use strict";
 
-    var App, appView;
+    var App, appView, spinner;
 
     App = {
         Models: {},
@@ -79,7 +79,7 @@
             return '/' + account + '/' + days;
         },
         parse: function (response) {
-            console.log(response.data);
+            // console.log(response.data);
             return response.data;
         }
     });
@@ -111,12 +111,11 @@
             } else {
                 console.log(this.model.validationError);
             }
-            this.render();
             return false;
         },
 
         render: function () {
-            $(this.el).html(this.template(this.model.toJSON()));
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
     });
@@ -131,7 +130,7 @@
             var msg;
             // For tiny data, skip using models
             msg = {alert_msg: this.msg};
-            $(this.el).html(this.template(msg));
+            this.$el.html(this.template(msg));
             return this;
         },
     });
@@ -156,7 +155,7 @@
             }
         },
         render: function () {
-            $(this.el).html(this.template());
+            this.$el.html(this.template());
             return this;
         },
     });
@@ -170,13 +169,13 @@
         },
 
         render: function () {
-            console.log(this.model.toJSON());
-            $(this.el).attr('data-index', this.model.get('full_name'));
-            $(this.el).addClass('search-row');
-            var html = $(this.el).html(this.template(this.model.toJSON()));
+            // console.log(this.model.toJSON());
+            this.$el.attr('data-index', this.model.get('full_name'));
+            this.$el.addClass('search-row');
+            var html = this.$el.html(this.template(this.model.toJSON()));
             this.setElement($(html));
             if (this.animateFlag) {
-                $(this.el).addClass('animated fadeInDown');
+                this.$el.addClass('animated fadeInDown');
             }
             return this;
         },
@@ -188,7 +187,7 @@
 
         render: function () {
             var animateFlag, container, filterView;
-            $(this.el).html(this.template());
+            this.$el.html(this.template());
             animateFlag = ($(window).width() >= 768);
             container = document.createDocumentFragment();
             filterView = new App.Views.Filter();
@@ -201,7 +200,7 @@
                 });
                 container.appendChild(v.render().el);
             }, this);
-            $(this.el).append(container);
+            this.$el.append(container);
             filterView.render();
             return this;
         },
@@ -212,8 +211,10 @@
         el: $('#content'),
         formView: new App.Views.Form(),
         alertView: new App.Views.Alert(),
+        spinner: null,
 
         initialize: function (attributes) {
+            this.spinner = Ladda.create(this.$('#submit')[0]);
             _.bindAll(this, 'querySuccess', 'queryError');
             this.collection.bind('request', this.showLoading, this);
             this.collection.bind('sync', this.hideLoading, this);
@@ -221,9 +222,7 @@
         },
 
         query: function (event) {
-            var data, that;
-            that = this;
-            // this.collection.formView = this.formView;
+            var data;
             this.collection.formModel = this.formView.model;
             this.collection.fetch({
                 success: this.querySuccess,
@@ -234,8 +233,8 @@
 
         querySuccess: function (collection, response) {
             var errorFlag, prop;
-            console.log(collection);
-            console.log(response);
+            // console.log(collection);
+            // console.log(response);
             errorFlag = false;
             for (prop in response.error) {
                 if (response.error.hasOwnProperty(prop)) {
@@ -261,13 +260,11 @@
         },
 
         showLoading: function () {
-            this.$('#loading').removeClass('invisible');
-            this.$('#submit').prop('disabled', 'disabled');
+            this.spinner.toggle();
         },
 
         hideLoading: function () {
-            this.$('#loading').addClass('invisible');
-            this.$('#submit').removeAttr('disabled');
+            this.spinner.toggle();
         },
     });
 
