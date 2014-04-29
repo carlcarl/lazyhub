@@ -202,7 +202,7 @@
                 container.appendChild(v.render().el);
             }, this);
             $(this.el).append(container);
-            $('#repo-form').prepend(searchField.render().el);
+            searchField.render();
             return this;
         },
     });
