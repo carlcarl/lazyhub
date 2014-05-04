@@ -8,7 +8,6 @@ Show the inactive github repos you starred
 * Search repos according to the days of the last commit
 * Filter searched repos using the keyword
 
-
 ## Installation
 
     pip install -r requirements.txt
