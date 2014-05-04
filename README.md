@@ -23,5 +23,4 @@ In `lazyhub` folder, create a file `settings_local.py`, write followings:
     DEBUG = False
     TEMPLATE_DEBUG = False
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']    
-    
-    
+
