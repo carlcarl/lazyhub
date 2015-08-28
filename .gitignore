@@ -3,3 +3,6 @@ settings_local.py
 *.swp
 CACHE/
 .ropeproject/
+webpack-stats.json
+lazyhub/static/dist/
+node_modules/
