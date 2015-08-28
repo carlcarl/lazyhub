@@ -5,78 +5,78 @@
 {% block content %}
 
 <header id="header">
-	<h1>Lazyhub</h1>
-	<p id="tagline">
-		<span>Show the inactive github repos you starred</span>
-	</p>
-	<div class="hidden-xs">
-		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
-			style="width:75px;"></iframe>
-		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;count=true&amp;size=large"
-			style="width:230px;"></iframe>
-	</div>
+  <h1>Lazyhub</h1>
+  <p id="tagline">
+    <span>Show the inactive github repos you starred</span>
+  </p>
+  <div class="hidden-xs">
+    <iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
+      style="width:75px;"></iframe>
+    <iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;count=true&amp;size=large"
+      style="width:230px;"></iframe>
+  </div>
 
-	<div class="visible-xs">
-		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
-			style="width:75px;"></iframe>
-		<iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
-			style="width:170px;" ></iframe>
-	</div>
+  <div class="visible-xs">
+    <iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;repo=lazyhub&amp;type=watch&amp;size=large"
+      style="width:75px;"></iframe>
+    <iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=carlcarl&amp;type=follow&amp;size=large"
+      style="width:170px;" ></iframe>
+  </div>
 </header>
 
 <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-	<form id="github-form" class="form-inline" name="github-form" role="form">
-		<script type="text/template" id="form-template">
-			<div id="account-group" class="form-group col-xs-12 col-sm-4 col-lg-3 col-lg-offset-1 <%= error.account === true ? 'has-error' : '' %>">
-				<label class="sr-only" for="account"></label>
-				<input id="account" name="account" class="form-control" type="text" placeholder="Enter account" autofocus value="<%= account %>">
-			</div>
-			<div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5 <%= error.days  === true ? 'has-error' : '' %>">
-				<div class="input-group">
-					<label class="sr-only" for="days"></label>
-					<span class="input-group-addon input-group-simple">Since</span>
-					<input id="days" name="days" class="days form-control" type="text" placeholder="" value="<%= days %>">
-					<span class="input-group-addon input-group-simple">day(s) ago</span>
-				</div>
-			</div>
-			<div id="submit-group" class="form-group col-xs-12 col-sm-2 col-lg-2">
-				<button id="submit" type="submit" class="btn btn-primary btn-block ladda-button" data-style="zoom-in"><span class="ladda-label">Go</span></button>
-			</div>
-			<div class="clearfix"></div>
-		</script>
-	</form>
-	<div id="alert" class="col-lg-12">
-		<script type="text/template" id="alert-template">
-			<div class="alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<span><%= alert_msg %></span>
-			</div>
-		</script>
-	</div>
-	<div id="search-result" class="col-lg-12">
-		<div id="filter-form" class="ui input col-md-6 col-md-offset-3">
-			<script type="text/template" id="filter-template">
-				<label class="sr-only" for="filter-field"></label>
-				<div class="input-group">
-					<input id="filter-field" name="filter-field" class="form-control" type="text" placeholder="Filter repo..." autofocus value="">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-				</div>
-			</script>
-		</div>
-		<!-- Ref: http://blog.mukispace.com/full-text-search-by-css/ -->
-		<style id="m-search">
-		</style>
-		<div id="repo-form" class="table-responsive col-lg-12">
-			<table id="repo-table" class="table table-hover">
-				<script type="text/template" id="repos-template">
-					<tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>
-				</script>
-			</table>
-			<script type="text/template" id="repo-template">
-				<td><%= counter %></td><td><a href="<%= html_url %>" target="<%= full_name %>"><%= full_name %></a></td><td><%= pushed_at %></td>
-			</script>
-		</div>
-	</div>
+  <form id="github-form" class="form-inline" name="github-form" role="form">
+    <script type="text/template" id="form-template">
+      <div id="account-group" class="form-group col-xs-12 col-sm-4 col-lg-3 col-lg-offset-1 <%= error.account === true ? 'has-error' : '' %>">
+        <label class="sr-only" for="account"></label>
+        <input id="account" name="account" class="form-control" type="text" placeholder="Enter account" autofocus value="<%= account %>">
+      </div>
+      <div id="days-group" class="form-group col-xs-12 col-sm-6 col-lg-5 <%= error.days  === true ? 'has-error' : '' %>">
+        <div class="input-group">
+          <label class="sr-only" for="days"></label>
+          <span class="input-group-addon input-group-simple">Since</span>
+          <input id="days" name="days" class="days form-control" type="text" placeholder="" value="<%= days %>">
+          <span class="input-group-addon input-group-simple">day(s) ago</span>
+        </div>
+      </div>
+      <div id="submit-group" class="form-group col-xs-12 col-sm-2 col-lg-2">
+        <button id="submit" type="submit" class="btn btn-primary btn-block ladda-button" data-style="zoom-in"><span class="ladda-label">Go</span></button>
+      </div>
+      <div class="clearfix"></div>
+    </script>
+  </form>
+  <div id="alert" class="col-lg-12">
+    <script type="text/template" id="alert-template">
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <span><%= alert_msg %></span>
+      </div>
+    </script>
+  </div>
+  <div id="search-result" class="col-lg-12">
+    <div id="filter-form" class="ui input col-md-6 col-md-offset-3">
+      <script type="text/template" id="filter-template">
+        <label class="sr-only" for="filter-field"></label>
+        <div class="input-group">
+          <input id="filter-field" name="filter-field" class="form-control" type="text" placeholder="Filter repo..." autofocus value="">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        </div>
+      </script>
+    </div>
+    <!-- Ref: http://blog.mukispace.com/full-text-search-by-css/ -->
+    <style id="m-search">
+    </style>
+    <div id="repo-form" class="table-responsive col-lg-12">
+      <table id="repo-table" class="table table-hover">
+        <script type="text/template" id="repos-template">
+          <tr><th width="25%">#</th><th>Repo</th><th width="30%">Last updated time</tr>
+        </script>
+      </table>
+      <script type="text/template" id="repo-template">
+        <td><%= counter %></td><td><a href="<%= html_url %>" target="<%= full_name %>"><%= full_name %></a></td><td><%= pushed_at %></td>
+      </script>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
