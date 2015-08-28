@@ -1,11 +1,25 @@
 /*jslint browser:true */
 /*jslint es5: true */
 /*jslint nomen: true */
-/*global $, _, jQuery, alert, console, Backbone, Ladda*/
-(function ($) {
+/*global $, alert, console, require*/
+
+var _, Backbone, Ladda;
+
+require("bootstrap/less/bootstrap.less");
+require("ladda/css/ladda.scss");
+
+require("../css/style.css");
+
+_ = require('underscore');
+require('bootstrap');
+Backbone = require('backbone');
+Ladda = require('ladda');
+
+(function () {
     "use strict";
 
     var App, appView, spinner;
+
 
     App = {
         Models: {},
@@ -13,19 +27,6 @@
         Collections: {},
         Templates: {}
     };
-
-    /*
-    csrfToken = $("input[name='csrfmiddlewaretoken']").val();
-
-    Backbone.sync = (function (original) {
-        return function (method, model, options) {
-            options.beforeSend = function (xhr) {
-                xhr.setRequestHeader('X-CSRFToken', csrfToken);
-            };
-            original(method, model, options);
-        };
-    }(Backbone.sync));
-    */
 
     App.Models.Repo = Backbone.Model.extend({
         // Use full_name as the id of each record(repo)
@@ -270,4 +271,4 @@
 
     appView = new App.Views.All();
 
-}(jQuery));
+}());

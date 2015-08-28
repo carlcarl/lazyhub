@@ -42,14 +42,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
+    'webpack_loader',
     'lazyhub',
 )
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,6 +93,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+WEBPACK_LOADER = {
+    'BUNDLE_DIR_NAME': 'dist/',
+    'STATS_FILE': 'webpack-stats.json',
+    'POLL_DELAY': 0.2,
+    'IGNORE': ['.+\.hot-update.js', '.+\.map']
+}
 
 try:
     from settings_local import *

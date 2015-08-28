@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,18 +31,7 @@
 		<meta name="twitter:creator" content="@carl830" />
 
 		<title>Lazyhub</title>
-		{% load staticfiles %}
-		{% if debug %}
-		<link rel="stylesheet" href="{% static "vendor/bootstrap3/3.1.1/css/bootstrap.min.css" %}">
-		{% else %}
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
-		{% endif %}
-		{% load compress %}
-		{% compress css %}
-		<link rel="stylesheet" href="{% static "vendor/ladda-bootstrap/css/ladda-themeless.min.css" %}">
-		<link rel="stylesheet" href="{% static "vendor/animate/animate.min.css" %}">
-		<link rel="stylesheet" href="{% static "css/style.css" %}">
-		{% endcompress %}
+		{% render_bundle 'main' 'css' %}
 		{% if not debug %}
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -59,22 +50,7 @@
 				{% block content %}(no content){% endblock %}
 			</div>
 		</div>
-		{% if debug %}
-		<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
-		<script src="{% static "vendor/bootstrap3/3.1.1/js/bootstrap.min.js" %}"></script>
-		<script src="{% static "vendor/underscore.js/1.6.0/underscore-min.js" %}"></script>
-		<script src="{% static "vendor/backbone.js/1.1.2/backbone-min.js" %}"></script>
-		{% else %}
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
-		{% endif %}
-		{% compress js %}
-		<script src="{% static "vendor/ladda-bootstrap/js/spin.min.js" %}"></script>
-		<script src="{% static "vendor/ladda-bootstrap/js/ladda.min.js" %}"></script>
-		<script src="{% static "js/app.js" %}"></script>
-		{% endcompress %}
+		{% render_bundle 'main' 'js' %}
 		{% endblock %}
 	</body>
 </html>

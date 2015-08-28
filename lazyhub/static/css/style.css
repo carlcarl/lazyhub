@@ -1,3 +1,5 @@
+@import '../vendor/animate/animate.min.css';
+
 header, section, footer, aside, nav, article, figure { 
     display: block; 
 }
@@ -27,10 +29,6 @@ header, section, footer, aside, nav, article, figure {
     border: none;
     background-color: inherit;
     font-size: 1.2em;
-}
-
-#days {
-    border-radius: 4px;
 }
 
 #search-result {
