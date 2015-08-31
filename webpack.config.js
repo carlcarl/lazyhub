@@ -3,8 +3,11 @@ var BundleTracker  = require('webpack-bundle-tracker');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    context: __dirname + '/lazyhub/static/',
-    entry: './js/app.js',
+    context: __dirname ,
+    entry: {
+        main: ['./lazyhub/static/js/app.js'],
+        vendor: ['jquery']
+    },
     output: {
         
         path: __dirname + "/lazyhub/static/dist",
@@ -12,6 +15,7 @@ module.exports = {
     },
     plugins: [
         new BundleTracker({filename: './webpack-stats.json'}),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-[hash].js'),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
