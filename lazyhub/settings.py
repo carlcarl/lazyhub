@@ -30,17 +30,14 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-COMPRESS_OFFLINE = True
-COMPRESS_ROOT = os.path.join(BASE_DIR, "lazyhub/static")
-
 # Application definition
 
 INSTALLED_APPS = (
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    # 'django.contrib.sessions',
+    # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
     'lazyhub',
@@ -52,11 +49,11 @@ STATICFILES_FINDERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -64,6 +61,13 @@ ROOT_URLCONF = 'lazyhub.urls'
 
 WSGI_APPLICATION = 'lazyhub.wsgi.application'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.template.context_processors.debug',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.media',
+    'django.template.context_processors.static',
+    'django.template.context_processors.tz',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
